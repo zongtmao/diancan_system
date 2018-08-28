@@ -8,25 +8,55 @@ import Abort from './components/abort/Abort'
 import Login from './components/Login'
 import Register from './components/Register'
 
+// 二级路由
+import History from './components/abort/History.vue'
+import Contant from './components/abort/Contant.vue'
+import Delivery from './components/abort/Delivery.vue'
+import OriderGuider from './components/abort/OrderGuider.vue'
+
+// 三级路由
+import Phone from './components/abort/contact/Phone.vue'
+import PhoneName from './components/abort/contact/PhoneName.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {path:'/',component:Home},
-  {path:'/menu',component:Menu},
-  {path:'/admin',component:Admin},
-  {path:'/abort',component:Abort},
-  {path:'/login',component:Login},
-  {path:'/register',component:Register}
+    { path: '/', name: 'homeLink', component: Home },
+    { path: '/menu', name: 'menuLink', component: Menu },
+    { path: '/admin', name: 'adminLink', component: Admin },
+    {
+        path: '/abort',
+        name: 'abortLink',
+        component: Abort,
+        redirect: '/abort/contant',
+        children: [
+            { path: '/abort/history', name: 'historyLink', component: History },
+            {
+                path: '/abort/contant',
+                name: 'contantLink',
+                component: Contant,
+                redirect: '/phonename',
+                children: [
+                    { path: '/phone', name: 'phoneLink', component: Phone },
+                    { path: '/phonename', name: 'phonenameLink', component: PhoneName },
+                ]
+            },
+            { path: '/abort/delivery', name: 'deliveryLink', component: Delivery },
+            { path: '/abort/oriderGuider', name: 'orderGuiderLink', component: OriderGuider },
+        ]
+    },
+    { path: '/login', name: 'loginLink', component: Login },
+    { path: '/register', name: 'rigisterLink', component: Register },
+    { path: '*', redirect: '/' }
 ]
 
 const router = new VueRouter({
-  routes,
-  mode:'history'//去掉URL地址里的#
+    routes,
+    mode: 'history' //去掉URL地址里的#
 })
 
 new Vue({
-  el: '#app',
-  router,
-  render: h => h(App)
+    el: '#app',
+    router,
+    render: h => h(App)
 })
