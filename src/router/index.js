@@ -21,7 +21,12 @@ Vue.use(Router)
 
 export default new Router({
     routes:[
-        { path: '/', name: 'homeLink', component: Home },
+        { path: '/', name: 'homeLink', components: {
+            default:Home,
+            'orderGuiderLink':OriderGuider,
+            'historyLink':History,
+            'deliveryLink':Delivery
+        }},
         { path: '/menu', name: 'menuLink', component: Menu },
         { path: '/admin', name: 'adminLink', component: Admin },
         {
