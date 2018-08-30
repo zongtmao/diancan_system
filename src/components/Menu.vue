@@ -111,9 +111,15 @@
             },
             decCount(item){
                 item.count--;
+                if(item.count <=0){
+                    this.removeBasket(item);
+                }
             },
             addCount(item){
                 item.count++;
+            },
+            removeBasket(item){
+                this.baskets.splice(this.baskets.indexOf(item),1);
             }
         }
     }
