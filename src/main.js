@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'  //此处的命名必须为router,不然报TypeError: Cannot read property 'matched' of undefined"
 import axios from  'axios'
 
+import { store } from './store/index.js'
+
 axios.defaults.baseURL = 'https://wd1412916864xhlvtc.wilddogio.com/'
 
 router.beforeEach((to, from, next) =>{
@@ -19,5 +21,6 @@ router.beforeEach((to, from, next) =>{
 
 new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount('#app');
