@@ -72,7 +72,7 @@
 
                 // axios vue-resource  fetch
 
-                fetch("https://wd1412916864xhlvtc.wilddogio.com/menu.json",{
+                fetch("https://wd2120267981rsvabc.wilddogio.com/menu.json",{
                     method:'POST',
                     headers:{
                         "Content-type":'application/json'

@@ -43,7 +43,7 @@
             addNewPizza : NewPizza
         },
         created(){
-            fetch("https://wd1412916864xhlvtc.wilddogio.com/menu.json")
+            fetch("https://wd2120267981rsvabc.wilddogio.com/menu.json")
                  .then(res => {
                      return res.json();
                  })
@@ -58,7 +58,7 @@
         },
         methods:{
             deleteData(item){
-                fetch("https://wd1412916864xhlvtc.wilddogio.com/menu/"+ item.id +"/.json",{
+                fetch("https://wd2120267981rsvabc.wilddogio.com/menu/"+ item.id +"/.json",{
                     method:'DELETE',
                     headers:{
                         "Content-type":'application/json'
