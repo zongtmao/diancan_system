@@ -3,7 +3,7 @@ const state = {
 }
 
 const getters = {
-    getMenuItems : state => state.menuItems
+    getMenuItems: state => state.menuItems
 }
 
 const mutations = {

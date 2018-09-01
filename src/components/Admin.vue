@@ -46,7 +46,7 @@
             getMenuItems:{
                 get(){
                     // 获取vuex中的数据
-                    return this.$store.state.menuItems;
+                    return this.$store.state.menus.menuItems;
                 },
                 set(){}
                 

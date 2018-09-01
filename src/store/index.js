@@ -1,25 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import menus from './module/menu'
+import menus from './module/menus'
 import status from './module/status'
-import users from './module/user'
+import users from './module/users'
 
-// import * as getters from './getters'
-// import * as actions from './actions'
-// import * as mutations from './mutations'
+
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-    // state:{
-    //     menuItems:{},
-    //     currentUser:null,
-    //     isLogin:false
-    // },
-    // getters,
-    // mutations,
-    // actions
+
     modules:{
         menus,
         users,

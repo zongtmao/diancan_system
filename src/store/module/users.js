@@ -9,7 +9,6 @@ const getters = {
 const mutations = {
     setUserStatus(state, user){
         if(user){
-            console.log(state);
             state.currentUser = user;
             state.isLogin = true;
         } else {
