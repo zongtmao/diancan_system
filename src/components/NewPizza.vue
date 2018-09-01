@@ -80,8 +80,12 @@
                     body:JSON.stringify(data)
                 })
                   .then((res) => res.json())
-                  .then((data) => this.$router.push({name:'menuLink'}))
-                  .catch(err => console.log(err))
+                //   .then((data) => this.$router.push({name:'menuLink'}))
+                // 用vuex将数据同步
+                .then((data) => {
+                    this.$store.commit("pushToMenuItems",data);
+                })
+                .catch(err => console.log(err))
             }
         }
     }

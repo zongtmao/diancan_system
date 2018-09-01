@@ -69,7 +69,10 @@
         },
         computed:{
             getMenuItems(){
-                return this.$store.state.menuItems;
+                // 获取vuex中的数据
+                // return this.$store.state.menuItems;
+                // 使用getters获取数据，这样menuItems就不会暴露到外界了
+                return this.$store.getters.getMenuItems;
             },
             totalMoney(){
                 let total = 0;
@@ -120,7 +123,8 @@
             getMenuDetail(){
                 axios.get("menu.json")
                      .then(res => {
-                        this.$store.state.menuItems = res.data;
+                        //  改变vuex中的状态
+                        this.$store.commit("setMenuItems",res.data);
                      })
             }
         }

@@ -14,7 +14,7 @@
                         <th>删除</th>
                     </tr>
                 </thead>
-                <tbody v-for="item in this.menuItems" :key="item.id">
+                <tbody v-for="item in getMenuItems" :key="item.name">
                     <tr>
                         <td>{{item.name}}</td>
                         <td>
@@ -36,11 +36,21 @@
     export default{
         data(){
             return{
-                menuItems:[]
+                // getMenuItems:[]
             }
         },
         components:{
             addNewPizza : NewPizza
+        },
+        computed:{
+            getMenuItems:{
+                get(){
+                    // 获取vuex中的数据
+                    return this.$store.state.menuItems;
+                },
+                set(){}
+                
+            }
         },
         created(){
             fetch("https://wd2120267981rsvabc.wilddogio.com/menu.json")
@@ -53,7 +63,8 @@
                         data[key].id = key;
                         menuLists.push(data[key]);
                     }
-                    this.menuItems = menuLists;
+                    // this.getMenuItems = menuLists;
+                    this.$store.commit("setMenuItems",menuLists);
                  })
         },
         methods:{
@@ -65,7 +76,11 @@
                     }
                 })
                 .then(res => res.json())
-                .then(data => this.$router.push({name:'menuLink'}))
+                // .then(data => this.$router.push({name:'menuLink'}))
+                // 用vuex进行删除
+                .then(data => {
+                    this.$store.commit("removeMenuItems",item);
+                })
                 .catch(err => console.log(err))
             }
         }
