@@ -48,7 +48,7 @@
                     }
                     axios.post("/user.json",parseData)
                          .then((res) => {
-                             this.$router.push({name:loginLink})
+                            this.$router.push({name:'loginLink'})
                          })
                 } else {
                     alert("密码不一致");

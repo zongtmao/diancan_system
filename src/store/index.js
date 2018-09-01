@@ -5,10 +5,14 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state:{
-        menuItems:{}
+        menuItems:{},
+        currentUser:null,
+        isLogin:false
     },
     getters:{
-        getMenuItems: state => state.menuItems
+        getMenuItems: state => state.menuItems,
+        currentUser: state => state.currentUser,
+        isLogin: state => state.isLogin
     },
     mutations:{
         setMenuItems(state, data){
@@ -23,10 +27,21 @@ export const store = new Vuex.Store({
         },
         pushToMenuItems(state, data){
             state.menuItems.push(data);
+        },
+        setUserStatus(state, user){
+            if(user){
+                state.currentUser = user;
+                state.isLogin = true;
+            } else {
+                state.currentUser = null;
+                state.isLogin = false;
+            }
         }
     },
     actions:{
-
+        setLoginUser({commit},user){
+            commit("setUserStatus",user)
+        }
     }
 
 })
